@@ -5,7 +5,7 @@ const path = require("path");
 
 module.exports = {
   //context: __dirname,
-  entry: "./src/canvas.js",
+  entry: "./src/app.js",
   output: {
     path: path.resolve(__dirname, './dist'),
     publicPath: '/dist/',
@@ -14,22 +14,14 @@ module.exports = {
   devServer: {
     contentBase: __dirname,
   },
-  resolve: {
-    alias: {vue: 'vue/dist/vue.js'},
-    extensions: ['.js', '.scss', '.vue'],
-    modules: [
-      path.join(__dirname, "src"), 
-      "node_modules"
-    ],
-  },
   module: {
     rules: [
-      {
+      /*{
         enforce: 'pre',
         test: /\.js$/,
         loader: 'eslint-loader',
         exclude: /node_modules/
-      },
+      },*/
       {
         test: /\.js$/,
         exclude: /node_modules/,
@@ -38,15 +30,6 @@ module.exports = {
             loader: "babel-loader",
             options: { presets: ["latest"] }
           }
-        ],
-      },
-      {
-        test: /\.scss$/,
-        exclude: /node_modules/,
-        use: [
-          "style-loader", 
-          "css-loader",
-          "sass-loader"
         ],
       }
     ]
